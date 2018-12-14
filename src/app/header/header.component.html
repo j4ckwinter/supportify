@@ -1,0 +1,23 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a routerLink="/" class="navbar-brand">Supportify</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="/incidents">Incidents</a></li>
+        <li routerLinkActive="active"><a routerLink="/clients">Clients</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" appDropdown>
+          <a style="cursor: pointer" class="dropdown-toggle" role="button">Settings<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a style="cursor: pointer">Login</a></li>
+            <li><a style="cursor: pointer">Logout</a></li>
+            <li><a style="cursor: pointer">Change password</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

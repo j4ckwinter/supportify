@@ -1,0 +1,32 @@
+<div>
+  <div class="container-fluid">
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false"
+                           *ngFor="let incident of incidents; let i = index">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+              {{ incident.title }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ panelOpenState ? '' : incident.description }}
+          </mat-panel-description>
+          <mat-panel-description>
+            {{ panelOpenState ? '' : incident.priority }}
+          </mat-panel-description>
+          <mat-panel-description>
+            {{ panelOpenState ? '' : incident.client.name }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field>
+          <input matInput placeholder="First name">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Age">
+        </mat-form-field>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+
+
