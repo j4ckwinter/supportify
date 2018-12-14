@@ -16,7 +16,6 @@ import { IncidentEditComponent } from './incidents/incident-edit/incident-edit.c
 import {IncidentsService} from "./incidents/incidents.service";
 import {HttpClientModule} from "@angular/common/http";
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +23,7 @@ import {HttpClientModule} from "@angular/common/http";
     DropdownDirective,
     IncidentsComponent,
     ClientsComponent,
-    IncidentEditComponent
+    IncidentEditComponent,
   ],
   imports: [
     BrowserModule,
