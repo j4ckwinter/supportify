@@ -1,37 +1,22 @@
-<div>
-  <div class="container-fluid">
-    <mat-accordion class="example-headers-align">
-      <mat-expansion-panel (opened)="panelOpenState = true"
-                           (closed)="panelOpenState = false"
-                           *ngFor="let incident of incidents; let i = index">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            {{ incident.title }}
-          </mat-panel-title>
-          <mat-panel-description>
-            {{ panelOpenState ? '' : incident.client.name }}
-          </mat-panel-description>
-          <mat-panel-description>
-            SI:{{ incident.id }}
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <mat-list-item>
-          <ul class="list-group">
-            <li class="list-group-item">
-              <p>Incident ID: {{ incident.id }}</p>
-              <p>Status: {{ incident.status }}</p>
-              <p>Priority: P{{ incident.priority }}</p>
-              Client: {{ incident.client.name }}
-            </li>
-            <li class="list-group-item">
-              <p>{{ incident.title }}</p>
-              {{ incident.emails.content }}
-            </li>
-          </ul>
-        </mat-list-item>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </div>
-</div>
-
-
+<table class="table table-sm table-dark table-hover">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Status</th>
+    <th scope="col">Priority</th>
+    <th scope="col">Description</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let incident of incidents">
+  <tr>
+    <th scope="row">{{ incident.id }}</th>
+    <td>{{ incident.status }}</td>
+    <td>P{{ incident.priority }}</td>
+    <td> {{ incident.description }} </td>
+    <td>
+      <button type="button" class="btn btn-info">Open</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

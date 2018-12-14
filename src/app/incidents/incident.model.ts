@@ -1,5 +1,4 @@
 import {Client} from "../clients/client.model";
-import {Email} from "./email.model";
 
 export class Incident {
   public id: number;
@@ -8,15 +7,13 @@ export class Incident {
   public priority: number;
   public status: string;
   public client: Client;
-  public emails: Email;
 
-  constructor(id: number, title: string, description: string, priority: number, status: string, client: Client, emails: Email) {
+  constructor(id: number, title: string, description: string, priority: number, status: string, client: Client) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.priority = priority;
     this.status = status;
     this.client = client;
-    this.emails = emails;
   }
 }

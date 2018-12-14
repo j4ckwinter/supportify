@@ -1,8 +1,6 @@
 import {Client} from "./client.model";
 
 export class ClientService {
-
-
   private clients: Client[] = [
     new Client(
       1,
@@ -15,7 +13,6 @@ export class ClientService {
       'Japan'
     )
   ]
-
 
   constructor(clients: Client[]) {
     this.clients = clients;

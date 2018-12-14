@@ -1,9 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatNativeDateModule} from '@angular/material';
-import {MaterialModule} from './material-module';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,11 +25,8 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    MaterialModule,
-    MatNativeDateModule,
     ReactiveFormsModule,
   ],
   providers: [
