@@ -2,6 +2,7 @@ import {IncidentsService} from "./incidents.service";
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Incident} from "./incident.model";
 import {Subscription} from "rxjs";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
   selector: 'app-incidents',
@@ -11,12 +12,15 @@ import {Subscription} from "rxjs";
 export class IncidentsComponent implements OnInit, OnDestroy {
 
   incidents: Incident[];
+  incident: Incident;
   private subscription: Subscription;
-  panelOpenState = false;
+
+  id: number;
 
 
-
-  constructor(private incidentService: IncidentsService) { }
+  constructor(private incidentService: IncidentsService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.incidents = this.incidentService.getIncidents();
@@ -26,10 +30,21 @@ export class IncidentsComponent implements OnInit, OnDestroy {
           this.incidents = incidents;
         }
       )
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          this.incident = this.incidentService.getIncident(this.id);
+        }
+      )
   }
 
   onEditIncident(index: number) {
     this.incidentService.startedEditing.next(index);
+  }
+
+  onViewIncident(index: number) {
+    this.router.navigate([index], {relativeTo: this.route});
   }
 
 

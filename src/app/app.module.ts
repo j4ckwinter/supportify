@@ -12,6 +12,7 @@ import { ClientsComponent } from './clients/clients.component';
 import { IncidentEditComponent } from './incidents/incident-edit/incident-edit.component';
 import {IncidentsService} from "./incidents/incidents.service";
 import {HttpClientModule} from "@angular/common/http";
+import { IncidentFormComponent } from './incidents/incident-form/incident-form.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {HttpClientModule} from "@angular/common/http";
     IncidentsComponent,
     ClientsComponent,
     IncidentEditComponent,
+    IncidentFormComponent,
   ],
   imports: [
     BrowserModule,

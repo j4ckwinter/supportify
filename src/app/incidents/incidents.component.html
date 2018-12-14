@@ -8,14 +8,14 @@
     <th scope="col"></th>
   </tr>
   </thead>
-  <tbody *ngFor="let incident of incidents">
+  <tbody *ngFor="let incident of incidents; let i = index">
   <tr>
     <th scope="row">{{ incident.id }}</th>
     <td>{{ incident.status }}</td>
     <td>P{{ incident.priority }}</td>
     <td> {{ incident.description }} </td>
     <td>
-      <button type="button" class="btn btn-info">Open</button>
+      <button (click)="onViewIncident(i)" type="button" class="btn btn-info">Open</button>
     </td>
   </tr>
   </tbody>
