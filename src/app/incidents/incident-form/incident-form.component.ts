@@ -60,4 +60,8 @@ export class IncidentFormComponent implements OnInit {
     });
   }
 
+  getControls() {
+    return (<FormArray>this.incidentForm.get('client')).controls;
+  }
+
 }

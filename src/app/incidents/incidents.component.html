@@ -1,22 +1,24 @@
-<table class="table table-sm table-dark table-hover">
-  <thead>
-  <tr>
-    <th scope="col">ID</th>
-    <th scope="col">Status</th>
-    <th scope="col">Priority</th>
-    <th scope="col">Description</th>
-    <th scope="col"></th>
-  </tr>
-  </thead>
-  <tbody *ngFor="let incident of incidents; let i = index">
-  <tr>
-    <th scope="row">{{ incident.id }}</th>
-    <td>{{ incident.status }}</td>
-    <td>P{{ incident.priority }}</td>
-    <td> {{ incident.description }} </td>
-    <td>
-      <button (click)="onViewIncident(incident.id)" type="button" class="btn btn-info">Open</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<div class="container-fluid">
+  <table class="table table-sm table-dark table-hover">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Status</th>
+      <th scope="col">Priority</th>
+      <th scope="col">Description</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let incident of incidents; let i = index">
+    <tr>
+      <th scope="row">{{ incident.id }}</th>
+      <td>{{ incident.status }}</td>
+      <td>P{{ incident.priority }}</td>
+      <td> {{ incident.description }} </td>
+      <td>
+        <button (click)="onViewIncident(incident.id)" type="button" class="btn btn-info">Open</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
