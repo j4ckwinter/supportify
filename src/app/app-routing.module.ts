@@ -6,9 +6,8 @@ import {IncidentFormComponent} from "./incidents/incident-form/incident-form.com
 
 const routes: Routes = [
   { path: '', redirectTo: '/incidents', pathMatch: 'full' },
-  { path: 'incidents', component: IncidentsComponent, children: [
-      { path: ':id', component: IncidentFormComponent}
-    ] },
+  { path: 'incidents', component: IncidentsComponent},
+  { path: 'incidents/:id', component: IncidentFormComponent},
   { path: 'clients', component: ClientsComponent },
 ];
 

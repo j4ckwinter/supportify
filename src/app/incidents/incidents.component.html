@@ -15,7 +15,7 @@
     <td>P{{ incident.priority }}</td>
     <td> {{ incident.description }} </td>
     <td>
-      <button (click)="onViewIncident(i)" type="button" class="btn btn-info">Open</button>
+      <button (click)="onViewIncident(incident.id)" type="button" class="btn btn-info">Open</button>
     </td>
   </tr>
   </tbody>
