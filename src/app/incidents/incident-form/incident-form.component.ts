@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Params} from "@angular/router";
+import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {IncidentsService} from "../incidents.service";
+import {Incident} from "../incident.model";
 
 @Component({
   selector: 'app-incident-form',
@@ -8,14 +11,53 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class IncidentFormComponent implements OnInit {
 
-  incident: {id: number};
+  incidentId: number;
+  incident: Incident;
+  editMode = true;
+  incidentForm: FormGroup;
 
-  constructor(private route: ActivatedRoute) { } // get access to currently loaded route
+  constructor(private route: ActivatedRoute, private incidentService: IncidentsService) { } // get access to currently loaded route
 
   ngOnInit() {
-    this.incident = {
-      id: this.route.snapshot.params['id']
-    };
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.incidentId = +params['id'];
+          this.incident = this.incidentService.getIncidentById(this.incidentId);
+          this.initForm();
+        }
+      )
+  }
+
+  private initForm() {
+    let incidentId = 1;
+    let incidentTitle = '';
+    let incidentDescription = '';
+    let incidentPriority = 3;
+    let incidentStatus = '';
+    let incidentClient= new FormArray([]);
+
+    if (this.editMode) {
+      incidentTitle = this.incident.title;
+      incidentDescription = this.incident.description;
+      incidentPriority = this.incident.priority;
+      incidentStatus = this.incident.status;
+      incidentId = this.incident.id;
+      incidentClient.push(
+        new FormGroup({
+          'name': new FormControl(this.incident.client.name, Validators.required),
+          'region': new FormControl(this.incident.client.region, Validators.required)
+        })
+      )
+    }
+    this.incidentForm = new FormGroup({
+      'id': new FormControl(incidentId, Validators.required),
+      'title': new FormControl(incidentTitle, Validators.required),
+      'description': new FormControl(incidentDescription, Validators.required),
+      'priority': new FormControl(incidentPriority, Validators.required),
+      'status': new FormControl(incidentStatus, Validators.required),
+      'client': incidentClient
+    });
   }
 
 }

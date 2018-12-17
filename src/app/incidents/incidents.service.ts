@@ -34,8 +34,8 @@ export class IncidentsService {
     return this.incidents[index];
   }
 
-  getIncidentByStatus(status: string) {
-    return this.incidents[status];
+  getIncidentById(id: number) {
+    return this.incidents.find(x => x.id === id);
   }
 
   addIncident(incident: Incident) {
