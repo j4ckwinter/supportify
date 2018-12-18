@@ -14,7 +14,7 @@ export class IncidentsComponent implements OnInit, OnDestroy {
   incidents: Incident[];
   incident: Incident;
   private subscription: Subscription;
-  id: number;
+  newIncidentId: number;
 
   constructor(private incidentService: IncidentsService,
               private route: ActivatedRoute,
@@ -32,6 +32,11 @@ export class IncidentsComponent implements OnInit, OnDestroy {
 
   onViewIncident(index: number) {
     this.router.navigate([index], {relativeTo: this.route});
+  }
+
+  onNewRecipe() {
+    this.newIncidentId = this.incidentService.getNewIncidentId();
+    this.router.navigate([this.newIncidentId], {relativeTo: this.route});
   }
 
   ngOnDestroy() {

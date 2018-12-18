@@ -15,7 +15,6 @@ export class ClientsComponent implements OnInit {
   incidents: Incident[];
   private subscription: Subscription;
 
-
   constructor(private clientService: ClientService) { }
 
   ngOnInit() {

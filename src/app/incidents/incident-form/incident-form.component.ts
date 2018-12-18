@@ -23,6 +23,7 @@ export class IncidentFormComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.incidentId = +params['id'];
+          this.editMode = this.incidentService.getNewIncidentId() - 1 != this.incidentId;
           this.incident = this.incidentService.getIncidentById(this.incidentId);
           this.initForm();
         }
@@ -31,10 +32,10 @@ export class IncidentFormComponent implements OnInit {
 
   private initForm() {
     let incidentId = 1;
-    let incidentTitle = '';
-    let incidentDescription = '';
+    let incidentTitle = 'Title';
+    let incidentDescription = 'Description';
     let incidentPriority = 3;
-    let incidentStatus = '';
+    let incidentStatus = 'Open';
     let incidentClient= new FormArray([]);
 
     if (this.editMode) {

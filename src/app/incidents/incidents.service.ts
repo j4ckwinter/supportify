@@ -6,6 +6,8 @@ export class IncidentsService {
 
   incidentChanged = new Subject<Incident[]>();
   startedEditing = new Subject<number>();
+  lastIncident: Incident;
+  newId: number;
 
   private incidents: Incident[] = [
     new Incident(
@@ -36,6 +38,11 @@ export class IncidentsService {
 
   getIncidentById(id: number) {
     return this.incidents.find(x => x.id === id);
+  }
+
+  getNewIncidentId() {
+    this.lastIncident = this.incidents[this.incidents.length - 1];
+    return this.newId = this.lastIncident.id + 1;
   }
 
   getNumberOfIncidentsForClient(clientId: number) {
