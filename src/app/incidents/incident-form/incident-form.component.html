@@ -10,10 +10,43 @@
                      id="id"
                      type="text"
                      formControlName="id"
+                     readonly
               >
             </div>
           </div>
         </div>
+        <div formArrayName="client">
+          <div class="row"
+               *ngFor="let incidentCtrl of getControls(); let i = index"
+               [formGroupName]="i">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label>Client</label>
+                <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                  <input class="form-control"
+                         type="text"
+                         formControlName="name"
+                         readonly
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label>Region</label>
+                <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+                  <input class="form-control"
+                         type="text"
+                         formControlName="region"
+                         readonly
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-sm-3">
           <div class="form-group">
             <label for="priority">Priority</label>
@@ -35,34 +68,6 @@
                      type="text"
                      formControlName="status"
               >
-            </div>
-          </div>
-        </div>
-      </div>
-      <div formArrayName="client">
-        <div class="row"
-             *ngFor="let incidentCtrl of getControls(); let i = index"
-             [formGroupName]="i">
-          <div class="col-sm-3">
-            <div class="form-group">
-              <label>Client</label>
-              <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input class="form-control"
-                       type="text"
-                       formControlName="name"
-                >
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="form-group">
-              <label>Region</label>
-              <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
-                <input class="form-control"
-                       type="text"
-                       formControlName="region"
-                >
-              </div>
             </div>
           </div>
         </div>
@@ -91,6 +96,17 @@
                         formControlName="description"
               >
             </textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="form-group">
+            <div class="btn-toolbar">
+              <button type="button" class="btn btn-primary custom" [disabled]="!incidentForm.valid">Resolve</button>
+              <button type="button" class="btn btn-success custom" [disabled]="!incidentForm.dirty || !incidentForm.valid">Update</button>
+              <button type="button" class="btn btn-default custom">Cancel</button>
+            </div>
           </div>
         </div>
       </div>
