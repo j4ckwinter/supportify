@@ -1,11 +1,15 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-6 col-md-4" *ngFor="let client of clients; let i = index">
       <div class="thumbnail">
         <div class="caption">
-          <h3>Thumbnail label</h3>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          <h4 class="text-uppercase">{{ client.name }}</h4>
+          <p> Client ID: {{ client.id }} </p>
+          <p> Client Region: {{ client.region }} </p>
+          <div class="btn-toolbar">
+            <button type="button" class="btn btn-primary btn-block">Incidents</button>
+            <button type="button" class="btn btn-success btn-block">Details</button>
+          </div>
         </div>
       </div>
     </div>

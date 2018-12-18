@@ -38,8 +38,14 @@ export class IncidentsService {
     return this.incidents.find(x => x.id === id);
   }
 
+  getNumberOfIncidentsForClient(clientId: number) {
+
+    this.incidents.find(x => x.client.id === clientId);
+    console.log(this.incidents);
+  }
+
   addIncident(incident: Incident) {
-    this.incidents.push(incident); // spread operator, turn array into list
+    this.incidents.push(incident);
     this.incidentChanged.next(this.incidents.slice()) // emitting now as a subject type
   }
 

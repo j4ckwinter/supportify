@@ -1,16 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import {IncidentsService} from "../incidents/incidents.service";
+import {Client} from "./client.model";
+import {ClientService} from "./client.service";
+import {Subscription} from "rxjs";
+import {Incident} from "../incidents/incident.model";
 
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
-  styleUrls: ['./clients.component.css']
+  styleUrls: ['./clients.component.css'],
+  providers: [ ClientService ]
 })
 export class ClientsComponent implements OnInit {
+  clients: Client[];
+  incidents: Incident[];
+  private subscription: Subscription;
 
-  constructor() { }
+
+  constructor(private clientService: ClientService) { }
 
   ngOnInit() {
+    this.clients = this.clientService.getClients();
+    this.subscription = this.clientService.clientChanged
+      .subscribe(
+        (clients: Client []) => {
+          this.clients = clients;
+        }
+      )
+
   }
 
 }

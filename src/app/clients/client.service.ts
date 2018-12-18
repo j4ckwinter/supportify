@@ -1,5 +1,9 @@
 import {Client} from "./client.model";
+import {Subject} from "rxjs";
+import {Injectable} from "@angular/core";
+import {IncidentsService} from "../incidents/incidents.service";
 
+@Injectable()
 export class ClientService {
   private clients: Client[] = [
     new Client(
@@ -14,8 +18,9 @@ export class ClientService {
     )
   ]
 
-  constructor(clients: Client[]) {
-    this.clients = clients;
+  clientChanged = new Subject<Client[]>();
+
+  constructor(private incidentsService: IncidentsService) {
   }
 
   getClients() {
