@@ -35,8 +35,7 @@ export class IncidentsComponent implements OnInit, OnDestroy {
   }
 
   onNewRecipe() {
-    this.newIncidentId = this.incidentService.getNewIncidentId();
-    this.router.navigate([this.newIncidentId], {relativeTo: this.route});
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
 
   ngOnDestroy() {

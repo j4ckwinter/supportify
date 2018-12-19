@@ -6,6 +6,7 @@ export class IncidentsService {
 
   incidentChanged = new Subject<Incident[]>();
   startedEditing = new Subject<number>();
+  editMode = true;
   lastIncident: Incident;
   newId: number;
 
@@ -45,10 +46,8 @@ export class IncidentsService {
     return this.newId = this.lastIncident.id + 1;
   }
 
-  getNumberOfIncidentsForClient(clientId: number) {
-
-    this.incidents.find(x => x.client.id === clientId);
-    console.log(this.incidents);
+  setEditModelFalse(editMode: false) {
+    return this.editMode = false;
   }
 
   addIncident(incident: Incident) {
