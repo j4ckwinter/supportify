@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {IncidentsService} from "../incidents.service";
-import {Incident} from "../incident.model";
-import {el} from "@angular/platform-browser/testing/src/browser_util";
 
 @Component({
   selector: 'app-incident-form',
@@ -13,7 +11,6 @@ import {el} from "@angular/platform-browser/testing/src/browser_util";
 export class IncidentFormComponent implements OnInit {
 
   incidentId: number;
-  incident: Incident;
   editMode = false;
   incidentForm: FormGroup;
 
@@ -76,6 +73,28 @@ export class IncidentFormComponent implements OnInit {
 
   getControls() {
     return (<FormArray>this.incidentForm.get('client')).controls;
+  }
+
+  onSubmit() {
+    this.addOrUpdateClient();
+    if (this.editMode) {
+      this.incidentService.updateIncident(this.incidentId, this.incidentForm.value);
+    } else {
+      this.incidentService.addIncident(this.incidentForm.value);
+    }
+  }
+
+  addOrUpdateClient() {
+    if (this.editMode) {
+
+    } else {
+      (<FormArray>this.incidentForm.get('client')).push(
+        new FormGroup({
+          'name': new FormControl(null, Validators.required),
+          'region': new FormControl(null, Validators.required)
+        })
+      )
+    }
   }
 
 }

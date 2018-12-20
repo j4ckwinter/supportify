@@ -21,13 +21,14 @@ export class IncidentsComponent implements OnInit, OnDestroy {
               private router: Router) { }
 
   ngOnInit() {
-    this.incidents = this.incidentService.getIncidents();
     this.subscription = this.incidentService.incidentChanged
       .subscribe(
         (incidents: Incident []) => {
           this.incidents = incidents;
         }
       )
+    console.log(this.incidentService.getNewIncidentId());
+    this.incidents = this.incidentService.getIncidents();
   }
 
   onViewIncident(index: number) {
