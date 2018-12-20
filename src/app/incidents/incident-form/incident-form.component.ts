@@ -25,7 +25,6 @@ export class IncidentFormComponent implements OnInit {
         (params: Params) => {
           this.incidentId = +params['id'];
           this.editMode = +params['id'] != null;
-          console.log(this.incidentId)
           if(this.incidentId !== this.incidentId) {
             this.editMode = false;
           }
@@ -58,6 +57,12 @@ export class IncidentFormComponent implements OnInit {
       )
     } else {
       incidentId = this.incidentService.getNewIncidentId();
+      incidentClient.push(
+        new FormGroup({
+          'name': new FormControl("Name", Validators.required),
+          'region': new FormControl("Region", Validators.required)
+        })
+      )
     }
     this.incidentForm = new FormGroup({
       'id': new FormControl(incidentId, Validators.required),
