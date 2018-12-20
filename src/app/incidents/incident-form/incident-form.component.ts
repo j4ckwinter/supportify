@@ -25,6 +25,10 @@ export class IncidentFormComponent implements OnInit {
         (params: Params) => {
           this.incidentId = +params['id'];
           this.editMode = +params['id'] != null;
+          console.log(this.incidentId)
+          if(this.incidentId !== this.incidentId) {
+            this.editMode = false;
+          }
           this.initForm();
         }
       )
@@ -38,20 +42,18 @@ export class IncidentFormComponent implements OnInit {
     let incidentStatus = 'Open';
     let incidentClient= new FormArray([]);
 
-    console.log(this.editMode);
-    console.log(this.incidentService.getNewIncidentId());
 
     if (this.editMode) {
-      const incidentPull = this.incidentService.getIncidentById(this.incidentId);
-      incidentTitle = incidentPull.title;
-      incidentDescription = incidentPull.description;
-      incidentPriority = incidentPull.priority;
-      incidentStatus = incidentPull.status;
-      incidentId = incidentPull.id;
+      const incident = this.incidentService.getIncidentById(this.incidentId);
+      incidentTitle = incident.title;
+      incidentDescription = incident.description;
+      incidentPriority = incident.priority;
+      incidentStatus = incident.status;
+      incidentId = incident.id;
       incidentClient.push(
         new FormGroup({
-          'name': new FormControl(incidentPull.client.name, Validators.required),
-          'region': new FormControl(incidentPull.client.region, Validators.required)
+          'name': new FormControl(incident.client.name, Validators.required),
+          'region': new FormControl(incident.client.region, Validators.required)
         })
       )
     } else {
