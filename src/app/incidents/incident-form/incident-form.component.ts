@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {IncidentsService} from "../incidents.service";
 
 @Component({
@@ -62,10 +62,6 @@ export class IncidentFormComponent implements OnInit {
       'client': new FormControl(incidentClient, Validators.required),
       'region': new FormControl(incidentRegion, Validators.required)
     });
-  }
-
-  getControls() {
-    return (<FormArray>this.incidentForm.get('client')).controls;
   }
 
   onSubmit() {

@@ -14,7 +14,6 @@ export class IncidentsComponent implements OnInit, OnDestroy {
   incidents: Incident[];
   incident: Incident;
   private subscription: Subscription;
-  newIncidentId: number;
 
   constructor(private incidentService: IncidentsService,
               private route: ActivatedRoute,
@@ -27,7 +26,6 @@ export class IncidentsComponent implements OnInit, OnDestroy {
           this.incidents = incidents;
         }
       )
-    console.log(this.incidentService.getNewIncidentId());
     this.incidents = this.incidentService.getIncidents();
   }
 

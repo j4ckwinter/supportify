@@ -37,10 +37,7 @@ export class IncidentEditComponent implements OnInit, OnDestroy {
       )
   }
 
-  onAddIncident
-
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

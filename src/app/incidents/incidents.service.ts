@@ -1,12 +1,10 @@
 import {Incident} from "./incident.model";
 import {Subject} from "rxjs";
-import {Client} from "../clients/client.model";
 
 export class IncidentsService {
 
   incidentChanged = new Subject<Incident[]>();
   startedEditing = new Subject<number>();
-  editMode = true;
   lastIncident: Incident;
   newId: number;
   index: number;
