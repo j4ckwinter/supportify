@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {IncidentsService} from "../incidents.service";
 
@@ -14,7 +14,9 @@ export class IncidentFormComponent implements OnInit {
   editMode = false;
   incidentForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private incidentService: IncidentsService) { } // get access to currently loaded route
+  constructor(private route: ActivatedRoute,
+              private incidentService: IncidentsService,
+              private router: Router) { } // get access to currently loaded route
 
   ngOnInit() {
     this.route.params
@@ -70,6 +72,7 @@ export class IncidentFormComponent implements OnInit {
     } else {
       this.incidentService.addIncident(this.incidentForm.value);
     }
+    this.router.navigate(['/']);
   }
 
 }
