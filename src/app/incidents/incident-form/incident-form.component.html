@@ -1,6 +1,5 @@
 <div class="container-fluid">
   <form [formGroup]="incidentForm" (ngSubmit)="onSubmit()" >
-    <fieldset>
       <div class="row">
         <div class="col-sm-3">
           <div class="form-group">
@@ -10,37 +9,34 @@
                      id="id"
                      type="text"
                      formControlName="id"
+                     readonly
               >
             </div>
           </div>
         </div>
-        <div formArrayName="client">
-          <div class="row"
-               *ngFor="let incidentCtrl of getControls(); let i = index"
-               [formGroupName]="i">
-            <div class="col-sm-3">
-              <div class="form-group">
-                <label for="clientName">Client</label>
-                <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                  <input class="form-control"
-                         id="clientName"
-                         type="text"
-                         formControlName="name"
-                  >
-                </div>
-              </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="client">Client</label>
+            <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+              <input class="form-control"
+                     id="client"
+                     type="text"
+                     formControlName="client"
+                     [readOnly]="editMode"
+              >
             </div>
-            <div class="col-sm-3">
-              <div class="form-group">
-                <label for="clientRegion">Region</label>
-                <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
-                  <input class="form-control"
-                         id="clientRegion"
-                         type="text"
-                         formControlName="region"
-                  >
-                </div>
-              </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="region">Region</label>
+            <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+              <input class="form-control"
+                     id="region"
+                     type="text"
+                     formControlName="region"
+                     [readOnly]="editMode"
+              >
             </div>
           </div>
         </div>
@@ -119,6 +115,5 @@
           </div>
         </div>
       </div>
-    </fieldset>
   </form>
 </div>

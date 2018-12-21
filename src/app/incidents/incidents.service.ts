@@ -9,6 +9,7 @@ export class IncidentsService {
   editMode = true;
   lastIncident: Incident;
   newId: number;
+  index: number;
 
   private incidents: Incident[] = [
     new Incident(
@@ -17,7 +18,8 @@ export class IncidentsService {
       'Issue with cross site scripting when accessing WebConnect',
       3,
       'Open',
-        new Client(1, 'ABN', 'Netherlands')
+      'ABN',
+      'Netherlands'
       ),
     new Incident(
       10002,
@@ -25,7 +27,8 @@ export class IncidentsService {
       'Fails processing bypassing max day rollover and not getting cancelled',
       2,
       'Open',
-        new Client(2, 'Mizuho', 'Japan')
+      'Mizuho',
+      'Japan'
     )
   ];
 
@@ -46,17 +49,14 @@ export class IncidentsService {
     return this.newId = this.lastIncident.id + 1;
   }
 
-  setEditModelFalse(editMode: false) {
-    return this.editMode = false;
-  }
-
   addIncident(incident: Incident) {
     this.incidents.push(incident);
     this.incidentChanged.next(this.incidents.slice()) // emitting now as a subject type
   }
 
-  updateIncident(index: number, newIncident: Incident) {
-    this.incidents[index] = newIncident;
+  updateIncident(id: number, newIncident: Incident) {
+    this.index = this.incidents.indexOf(this.getIncidentById(id));
+    this.incidents[this.index] = newIncident;
     this.incidentChanged.next(this.incidents.slice());
   }
 

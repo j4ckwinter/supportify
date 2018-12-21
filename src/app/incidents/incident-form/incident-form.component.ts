@@ -36,7 +36,8 @@ export class IncidentFormComponent implements OnInit {
     let incidentDescription = 'Description';
     let incidentPriority = 3;
     let incidentStatus = 'Open';
-    let incidentClient= new FormArray([]);
+    let incidentClient= 'Client';
+    let incidentRegion= 'Region';
 
 
     if (this.editMode) {
@@ -46,20 +47,11 @@ export class IncidentFormComponent implements OnInit {
       incidentPriority = incident.priority;
       incidentStatus = incident.status;
       incidentId = incident.id;
-      incidentClient.push(
-        new FormGroup({
-          'name': new FormControl(incident.client.name, Validators.required),
-          'region': new FormControl(incident.client.region, Validators.required)
-        })
-      )
+      incidentClient = incident.client;
+      incidentRegion = incident.region;
+
     } else {
       incidentId = this.incidentService.getNewIncidentId();
-      incidentClient.push(
-        new FormGroup({
-          'name': new FormControl("Name", Validators.required),
-          'region': new FormControl("Region", Validators.required)
-        })
-      )
     }
     this.incidentForm = new FormGroup({
       'id': new FormControl(incidentId, Validators.required),
@@ -67,7 +59,8 @@ export class IncidentFormComponent implements OnInit {
       'description': new FormControl(incidentDescription, Validators.required),
       'priority': new FormControl(incidentPriority, Validators.required),
       'status': new FormControl(incidentStatus, Validators.required),
-      'client': incidentClient
+      'client': new FormControl(incidentClient, Validators.required),
+      'region': new FormControl(incidentRegion, Validators.required)
     });
   }
 
@@ -76,24 +69,10 @@ export class IncidentFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.addOrUpdateClient();
     if (this.editMode) {
       this.incidentService.updateIncident(this.incidentId, this.incidentForm.value);
     } else {
       this.incidentService.addIncident(this.incidentForm.value);
-    }
-  }
-
-  addOrUpdateClient() {
-    if (this.editMode) {
-
-    } else {
-      (<FormArray>this.incidentForm.get('client')).push(
-        new FormGroup({
-          'name': new FormControl(null, Validators.required),
-          'region': new FormControl(null, Validators.required)
-        })
-      )
     }
   }
 
