@@ -14,6 +14,7 @@ import {IncidentsService} from "./incidents/incidents.service";
 import {HttpClientModule} from "@angular/common/http";
 import { IncidentFormComponent } from './incidents/incident-form/incident-form.component';
 import { MergingComponent } from './merging/merging.component';
+import { MergeFormComponent } from './merging/merge-form/merge-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MergingComponent } from './merging/merging.component';
     IncidentEditComponent,
     IncidentFormComponent,
     MergingComponent,
+    MergeFormComponent,
   ],
   imports: [
     BrowserModule,
