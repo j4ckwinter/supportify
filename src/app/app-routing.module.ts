@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {IncidentsComponent} from "./incidents/incidents.component";
 import {ClientsComponent} from "./clients/clients.component";
 import {IncidentFormComponent} from "./incidents/incident-form/incident-form.component";
+import {MergingComponent} from "./merging/merging.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/incidents', pathMatch: 'full' },
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'incidents/:id', component: IncidentFormComponent},
   { path: 'incidents/new', component: IncidentFormComponent},
   { path: 'clients', component: ClientsComponent },
+  { path: 'merging', component: MergingComponent },
 ];
 
 @NgModule({

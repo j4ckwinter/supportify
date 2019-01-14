@@ -16,7 +16,7 @@ export class IncidentFormComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private incidentService: IncidentsService,
-              private router: Router) { } // get access to currently loaded route
+              private router: Router) { }
 
   ngOnInit() {
     this.route.params
@@ -40,7 +40,6 @@ export class IncidentFormComponent implements OnInit {
     let incidentStatus = 'Open';
     let incidentClient= 'Client';
     let incidentRegion= 'Region';
-
 
     if (this.editMode) {
       const incident = this.incidentService.getIncidentById(this.incidentId);
