@@ -35,8 +35,8 @@ export class IncidentFormComponent implements OnInit {
 
   private initForm() {
     let incidentId = 1;
-    let incidentTitle = 'Title';
-    let incidentDescription = 'Description';
+    let incidentTitle = '';
+    let incidentDescription = '';
     let incidentPriority = 3;
     let incidentStatus = 'Open';
     let incidentClient = 'Client';
