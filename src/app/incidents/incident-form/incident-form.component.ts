@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {IncidentsService} from "../incidents.service";
@@ -16,7 +16,8 @@ export class IncidentFormComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private incidentService: IncidentsService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.route.params
@@ -24,7 +25,7 @@ export class IncidentFormComponent implements OnInit {
         (params: Params) => {
           this.incidentId = +params['id'];
           this.editMode = +params['id'] != null;
-          if(this.incidentId !== this.incidentId) {
+          if (this.incidentId !== this.incidentId) {
             this.editMode = false;
           }
           this.initForm();
@@ -38,8 +39,8 @@ export class IncidentFormComponent implements OnInit {
     let incidentDescription = 'Description';
     let incidentPriority = 3;
     let incidentStatus = 'Open';
-    let incidentClient= 'Client';
-    let incidentRegion= 'Region';
+    let incidentClient = 'Client';
+    let incidentRegion = 'Region';
 
     if (this.editMode) {
       const incident = this.incidentService.getIncidentById(this.incidentId);
@@ -71,6 +72,10 @@ export class IncidentFormComponent implements OnInit {
     } else {
       this.incidentService.addIncident(this.incidentForm.value);
     }
+    this.router.navigate(['/']);
+  }
+
+  cancel() {
     this.router.navigate(['/']);
   }
 
