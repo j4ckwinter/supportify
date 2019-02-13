@@ -46,11 +46,15 @@
           <div class="form-group">
             <label for="priority">Priority</label>
             <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-flag"></span></span>
-              <input class="form-control"
-                     id="priority"
-                     type="text"
-                     formControlName="priority"
+              <select class="form-control"
+                      id="priority"
+                      formControlName="priority"
               >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
             </div>
           </div>
         </div>
@@ -58,11 +62,15 @@
           <div class="form-group">
             <label for="status">Status</label>
             <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
-              <input class="form-control"
+              <select class="form-control"
                      id="status"
-                     type="text"
                      formControlName="status"
               >
+                <option>Open</option>
+                <option>Waiting on support</option>
+                <option>Waiting on client</option>
+                <option>Closed</option>
+              </select>
             </div>
           </div>
         </div>
