@@ -15,6 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { IncidentFormComponent } from './incidents/incident-form/incident-form.component';
 import { MergingComponent } from './merging/merging.component';
 import { MergeFormComponent } from './merging/merge-form/merge-form.component';
+import {DataStorageService} from "./shared/data-storage.service";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MergeFormComponent } from './merging/merge-form/merge-form.component';
     ReactiveFormsModule,
   ],
   providers: [
-    IncidentsService
+    IncidentsService,
+    DataStorageService
   ],
   bootstrap: [AppComponent]
 })
